@@ -20,8 +20,6 @@ public class Brad07 {
 			System.out.println("E");
 		}
 		
-		
-		
 		System.out.println("Game Over");
 	}
 
