@@ -8,7 +8,7 @@ public class Brad04 {
 		System.out.println(var1);
 		System.out.println(var2);
 		
-		double a = 0;
+		double a = 10;
 		double b= 0;
 		System.out.println(a / b);
 		
