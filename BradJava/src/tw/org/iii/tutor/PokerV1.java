@@ -2,6 +2,8 @@ package tw.org.iii.tutor;
 
 public class PokerV1 {
 	public static void main(String[] args) {
+		long start = System.currentTimeMillis();
+		System.out.println(start);
 		// 1. 洗牌
 		int[] poker = new int[52];
 		for (int i=0; i<poker.length; i++) {
@@ -19,11 +21,13 @@ public class PokerV1 {
 			
 			if (!isRepeat) {
 				poker[i] = temp;
-				System.out.println(poker[i]);
+				//System.out.println(poker[i]);
 			}else {
 				i--;
 			}
 		}
+		long end = System.currentTimeMillis();
+		System.out.println(end);
 		
 		// 2. 發牌
 		
