@@ -16,7 +16,22 @@ public class TWId {
 	public TWId(boolean isMale, int area) {
 		// area => 0 - 25
 		String c1 = letters.substring(area, area+1);
+		StringBuffer sb = new StringBuffer(c1);
+		sb.append(isMale?"1":"2");
+		for (int i=0; i<7; i++) {
+			sb.append((int)(Math.random()*10));
+		}
+		
+		for (int i=0; i<10; i++) {
+			if (isRightId(sb.toString() + i)) {
+				id = sb.toString() + i;
+				break;
+			}
+		}
+		
 	}
+	
+	public String getId() {return id;}
 	
 	
 	private TWId(String id) {
