@@ -16,7 +16,12 @@ public class Brad28 {
 		}else {
 			System.out.println("XX");
 		}
-		
+		System.out.println("---");
+		if (TWId.isRightId("A123456789")) {
+			System.out.println("OK");
+		}else {
+			System.out.println("XX");
+		}
 
 	}
 

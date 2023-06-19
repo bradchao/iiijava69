@@ -2,6 +2,22 @@ package tw.org.iii.classes;
 
 public class TWId {
 	private String id;
+	private final static String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";	// 10, 11, ... 35
+	
+	public TWId() {
+		this((int)(Math.random()*2)==0?true:false);
+	}
+	public TWId(boolean isMale) {
+		this(isMale, (int)(Math.random()*26));
+	}
+	public TWId(int area) {
+		this((int)(Math.random()*2)==0?true:false , area);
+	}
+	public TWId(boolean isMale, int area) {
+		// area => 0 - 25
+		String c1 = letters.substring(area, area+1);
+	}
+	
 	
 	private TWId(String id) {
 		this.id = id;
@@ -10,7 +26,6 @@ public class TWId {
 	
 	public static boolean isRightId(String id) {
 		boolean isRight = false;
-		String letters = "ABCDEFGHJKLMNPQRSTUVXYWZIO";	// 10, 11, ... 35
 //		if (id.length() == 10) {
 //			if (letters.indexOf(id.charAt(0)) >= 0) {
 //				if (id.charAt(1) == '1' || id.charAt(1) == '2') {
