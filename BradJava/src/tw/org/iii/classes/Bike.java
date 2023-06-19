@@ -25,4 +25,9 @@ public class Bike {
 		return speed;
 	}
 	
+	public String toString() {
+		return "My speed is " + speed;
+	}
+	
+	
 }
