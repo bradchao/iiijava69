@@ -19,7 +19,10 @@ abstract class Shape {
 }
 class RecShap extends Shape{
 	double w, h;
-	RecShap(double w, double h){this.w=w; this.h=h;}
+	RecShap(double w, double h){
+		this.w = w; 
+		this.h = h;
+	}
 	double calArea() {
 		return w*h;
 	}

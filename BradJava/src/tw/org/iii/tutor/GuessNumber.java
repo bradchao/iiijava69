@@ -38,7 +38,7 @@ public class GuessNumber extends JFrame{
 		
 		guess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("OK");
+				System.out.println(createAnswer(4));
 			}
 		});
 		
@@ -46,11 +46,11 @@ public class GuessNumber extends JFrame{
 	}
 	
 	private void initGame() {
-		answer = createAnswer();
+		answer = createAnswer(4);
 		System.out.println(answer);
 	}
 	
-	private String createAnswer() {
+	private String createAnswer(int d) {
 		int num = 10;
 		int[] poker = new int[num];
 		for (int i=0; i<poker.length; i++) poker[i] = i;
@@ -64,7 +64,9 @@ public class GuessNumber extends JFrame{
 		}
 		
 		StringBuffer sb = new StringBuffer();
+		
 		sb.append(poker[0]).append(poker[1]).append(poker[2]);
+		
 		return sb.toString();
 	}
 	
