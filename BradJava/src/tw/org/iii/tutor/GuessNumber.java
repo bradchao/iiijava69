@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
@@ -16,6 +17,7 @@ public class GuessNumber extends JFrame{
 	private JTextField input;
 	private JTextArea log;
 	private String answer;
+	private int counter;
 	
 	public GuessNumber() {
 		super("猜數字");
@@ -38,7 +40,7 @@ public class GuessNumber extends JFrame{
 		
 		guess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println(createAnswer(4));
+				guess();
 			}
 		});
 		
@@ -46,11 +48,40 @@ public class GuessNumber extends JFrame{
 	}
 	
 	private void initGame() {
-		answer = createAnswer(4);
-		System.out.println(answer);
+		answer = createAnswer(3);
+		counter = 0;
+		//System.out.println(answer);
 	}
 	
-	private String createAnswer(int d) {
+	private void guess() {
+		counter++;
+		String g = input.getText();
+		String result = checkAB(g);
+		log.append(String.format("%d. %s => %s\n", counter, g, result));
+		input.setText("");
+		
+		if (g.equals(answer)) {
+			JOptionPane.showMessageDialog(null, "恭喜");
+		}else if (counter == 10) {
+			JOptionPane.showMessageDialog(null, "Loser: answer:" + answer);
+		}
+		
+	}
+	
+	private String checkAB(String g) {
+		int A, B; A = B = 0;
+		for (int i=0; i<answer.length(); i++) {
+			char c = g.charAt(i);
+			if (c  == answer.charAt(i)) {
+				A++;
+			}else if (answer.indexOf(c) >= 0) {
+				B++;
+			}
+		}
+		return String.format("%dA%dB", A, B);
+	}
+	
+	private static String createAnswer(int d) {
 		int num = 10;
 		int[] poker = new int[num];
 		for (int i=0; i<poker.length; i++) poker[i] = i;
@@ -65,7 +96,9 @@ public class GuessNumber extends JFrame{
 		
 		StringBuffer sb = new StringBuffer();
 		
-		sb.append(poker[0]).append(poker[1]).append(poker[2]);
+		for (int i=0; i<d; i++) {
+			sb.append(poker[i]);	
+		}
 		
 		return sb.toString();
 	}
