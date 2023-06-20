@@ -37,6 +37,14 @@ public class TWId {
 	private TWId(String id) {
 		this.id = id;
 	}
+	
+	public static TWId newTWId(String id) {
+		if (isRightId(id)) {
+			return new TWId(id);
+		}else {
+			return null;
+		}
+	}
 
 	
 	public static boolean isRightId(String id) {
