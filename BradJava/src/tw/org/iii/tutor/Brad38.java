@@ -20,13 +20,21 @@ public class Brad38 extends JFrame implements MouseListener {
 		mesg2 = new JTextField();
 		add(mesg2, BorderLayout.SOUTH);
 
-		addMouseListener(new MyMouseListener(this));
-		addMouseListener(this);
+		//addMouseListener(new MyMouseListener(this));
+		//addMouseListener(this);
+		addMouseListener(new MyMouseListenerV3());
+		addMouseListener(new MouseAdapter() {
+			@Override
+			public void mousePressed(MouseEvent e) {
+				
+			}
+		});
 		
 		setSize(800,  600);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
+	
 	
 	public void setMesgText(String mesgText) {
 		mesg.setText(mesgText);
@@ -35,6 +43,14 @@ public class Brad38 extends JFrame implements MouseListener {
 	public static void main(String[] args) {
 		new Brad38();
 	}
+	
+	class MyMouseListenerV3 extends MouseAdapter {
+		@Override
+		public void mousePressed(MouseEvent e) {
+			mesg.setText(e.getX() + ", " + e.getY());
+		}
+	}
+	
 
 	@Override
 	public void mouseClicked(MouseEvent e) {
