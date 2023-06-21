@@ -14,6 +14,7 @@ public class Brad35 {
 	}
 }
 abstract class Shape {
+	void m1() {}
 	abstract double calArea();
 	abstract double calLength();
 }

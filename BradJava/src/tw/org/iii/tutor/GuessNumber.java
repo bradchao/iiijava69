@@ -2,6 +2,7 @@ package tw.org.iii.tutor;
 
 import java.awt.BorderLayout;
 import java.awt.FlowLayout;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -9,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
@@ -17,7 +19,7 @@ public class GuessNumber extends JFrame{
 	private JTextField input;
 	private JTextArea log;
 	private String answer;
-	private int counter;
+	
 	
 	public GuessNumber() {
 		super("猜數字");
@@ -32,11 +34,15 @@ public class GuessNumber extends JFrame{
 		top.add(guess, BorderLayout.EAST);
 		top.add(input, BorderLayout.CENTER);
 		
-		add(log, BorderLayout.CENTER);
+		JScrollPane jsp = new JScrollPane(log);
+		add(jsp, BorderLayout.CENTER);
 		
 		setSize(640, 480);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		input.setFont(new Font(null, Font.BOLD, 48));
+		log.setFont(new Font(null, Font.BOLD, 48));
 		
 		guess.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -53,6 +59,7 @@ public class GuessNumber extends JFrame{
 		//System.out.println(answer);
 	}
 	
+	private int counter;
 	private void guess() {
 		counter++;
 		String g = input.getText();
@@ -62,8 +69,10 @@ public class GuessNumber extends JFrame{
 		
 		if (g.equals(answer)) {
 			JOptionPane.showMessageDialog(null, "恭喜");
+			
 		}else if (counter == 10) {
 			JOptionPane.showMessageDialog(null, "Loser: answer:" + answer);
+			
 		}
 		
 	}
