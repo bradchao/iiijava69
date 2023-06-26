@@ -6,7 +6,9 @@ import java.io.IOException;
 public class Brad41 {
 	public static void main(String[] args) {
 		Brad411 obj = new Brad411();
-		obj.m1();
+		try {
+			obj.m1();
+		}catch(Exception e) {}
 	}
 }
 class Brad411 {
