@@ -1,6 +1,8 @@
 package tw.org.iii.classes;
 
-public class Bike {
+import java.io.Serializable;
+
+public class Bike implements Serializable{
 	protected double speed;
 	public String owner;
 	

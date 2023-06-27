@@ -9,6 +9,7 @@ public class Brad53 {
 
 	public static void main(String[] args) {
 		Student s1 = new Student(45, 32, 56, "Brad");
+		System.out.println(s1.getName());
 		System.out.println(s1.sum());
 		System.out.println(s1.avg());
 		
