@@ -13,10 +13,11 @@ import javax.swing.DebugGraphics;
 import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel {
-	private LinkedList<LinkedList<HashMap<String, Integer>>> lines;
+	private LinkedList<LinkedList<HashMap<String, Integer>>> lines, garbag;
 	
 	public MyDrawer() {
 		lines = new LinkedList<>();
+		garbag = new LinkedList<>();
 		setBackground(Color.YELLOW);
 		MyListener myListener = new MyListener();
 		addMouseListener(myListener);
@@ -34,10 +35,8 @@ public class MyDrawer extends JPanel {
 			line.add(point);
 			
 			lines.add(line);
-			repaint();
-		}
-		@Override
-		public void mouseReleased(MouseEvent e) {
+			
+			garbag.clear();
 		}
 		@Override
 		public void mouseDragged(MouseEvent e) {
@@ -71,8 +70,22 @@ public class MyDrawer extends JPanel {
 	
 	public void clear() {
 		lines.clear();
+		garbag.clear();
 		repaint();
 	}
 	
+	public void undo() {
+		if (lines.size()>0) {
+			garbag.add(lines.removeLast());
+			repaint();
+		}
+	}
+	
+	public void redo() {
+		if (garbag.size() > 0) {
+			lines.add(garbag.removeLast());
+			repaint();
+		}
+	}
 	
 }

@@ -13,7 +13,7 @@ import tw.org.iii.classes.MyDrawer;
 
 public class MySign extends JFrame{
 	private MyDrawer myDrawer;
-	private JButton clear, undo, redo;
+	private JButton clear, undo, redo, saveJPEG;
 	
 	public MySign() {
 		super("簽名App");
@@ -25,11 +25,19 @@ public class MySign extends JFrame{
 		clear = new JButton("清除");
 		undo = new JButton("上一");
 		redo = new JButton("復原");
+		saveJPEG = new JButton("存檔");
 		JPanel top = new JPanel(new FlowLayout());
-		top.add(clear); top.add(undo); top.add(redo);
-		
+		top.add(clear); top.add(undo); top.add(redo); top.add(saveJPEG);
 		add(top, BorderLayout.NORTH);
 		
+		setSize(640, 480);
+		setVisible(true);
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		
+		initEvent();
+	}
+	
+	private void initEvent() {
 		clear.addActionListener(new ActionListener() {
 			@Override
 			public void actionPerformed(ActionEvent e) {
@@ -37,12 +45,29 @@ public class MySign extends JFrame{
 			}
 		});
 		
+		undo.addActionListener(new ActionListener() {
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myDrawer.undo();
+			}
+		});
 		
-		
-		setSize(640, 480);
-		setVisible(true);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
+		redo.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				myDrawer.redo();
+			}
+		});
+		saveJPEG.addActionListener(new ActionListener() {
+			
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				
+			}
+		});
 	}
+	
 	
 	public static void main(String[] args) {
 		new MySign();
