@@ -60,6 +60,11 @@ public class MyDrawer extends JPanel {
 	@Override
 	protected void paintComponent(Graphics g) {
 		super.paintComponent(g);
+		
+		if (g instanceof Graphics2D) {
+			
+		}
+		
 		Graphics2D g2d = (Graphics2D)g;
 		
 		g2d.setColor(Color.BLUE);
