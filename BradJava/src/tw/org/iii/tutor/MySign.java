@@ -103,6 +103,7 @@ public class MySign extends JFrame{
 				Color newColor = JColorChooser.showDialog(null, "換顏色", myDrawer.getColor());
 				if (newColor != null) {
 					myDrawer.setColor(newColor);
+					
 				}
 			}
 		});
