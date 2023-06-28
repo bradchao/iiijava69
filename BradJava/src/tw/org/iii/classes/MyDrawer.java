@@ -6,10 +6,13 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.LinkedList;
 
-import javax.swing.DebugGraphics;
+import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 
 public class MyDrawer extends JPanel {
@@ -86,6 +89,23 @@ public class MyDrawer extends JPanel {
 			lines.add(garbag.removeLast());
 			repaint();
 		}
+	}
+	
+	public void saveJPEG() {
+		System.out.println("saveJPEG()1");
+		BufferedImage img = new BufferedImage(getWidth(), getHeight(), BufferedImage.TYPE_INT_RGB);
+		Graphics g = img.getGraphics();
+		paint(g);
+		try {
+	        if (ImageIO.write(img, "jpg", new File("dir1/brad.jpg"))) {
+	        	System.out.println("OK");
+	        }else {
+	        	System.out.println("XX");
+	        }
+			System.out.println("saveJPEG()2");
+	    } catch (IOException e) {
+	    	System.out.println(e);
+	    }
 	}
 	
 }

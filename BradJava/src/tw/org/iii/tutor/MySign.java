@@ -63,7 +63,7 @@ public class MySign extends JFrame{
 			
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				
+				myDrawer.saveJPEG();
 			}
 		});
 	}
