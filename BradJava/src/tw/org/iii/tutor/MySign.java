@@ -11,12 +11,14 @@ import javax.swing.JColorChooser;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import tw.org.iii.classes.MyClock;
 import tw.org.iii.classes.MyDrawerV2;
 
 public class MySign extends JFrame{
 	private MyDrawerV2 myDrawer;
 	private JButton clear, undo, redo, saveJPEG, saveObj, loadObj,
 		changeColor;
+	private MyClock myClock;
 	
 	public MySign() {
 		super("簽名App");
@@ -32,10 +34,13 @@ public class MySign extends JFrame{
 		saveObj = new JButton("序列化");
 		loadObj = new JButton("解序列");
 		changeColor = new JButton("顏色");
+		
+		myClock = new MyClock();
+		
 		JPanel top = new JPanel(new FlowLayout());
 		top.add(clear); top.add(undo); top.add(redo); top.add(saveJPEG);
 		top.add(saveObj); top.add(loadObj);
-		top.add(changeColor);
+		top.add(changeColor); top.add(myClock);
 		add(top, BorderLayout.NORTH);
 		
 		setSize(640, 480);
